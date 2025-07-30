@@ -55,7 +55,7 @@ async def generate_pdf(data: dict):
         line = ""
         for word in words:
             test_line = line + (" " if line else "") + word
-            if current_page.get_text_length(test_line, fontsize=font_size) < max_width:
+            if fitz.get_text_length(test_line, fontsize=font_size) < max_width:
                 line = test_line
             else:
                 current_page.insert_text((x, y), line, fontsize=font_size, color=(0, 0, 0))
